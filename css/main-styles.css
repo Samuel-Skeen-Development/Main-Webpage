@@ -1,4 +1,4 @@
-body, html, ng-view, .view-container, .parallax-container, .parallax-content {
+body, html, ng-view, .view-container, .wrapper, .parallax-content, section {
 	width: 100%;
 	height: 100%;
 }
@@ -7,13 +7,28 @@ html, div {
 	background-color: #292C30;
 }
 
+.centering {
+	width: 60%;
+	
+	margin: 0 auto;
+	
+	font-size: 70pt;
+}
+
 /*    ---------------------------------------    PARALLAX INFO    */
 
-.parallax-container {
-	background-image: url("http://lorempixel.com/1920/1080/people"); 
+.wrapper * {
+	position: relative;
 }
+
+/*.wrapper {
+	background-image: url("http://lorempixel.com/1920/1080/people"); 
+}*/
 
 .parallax-content {
 	background-image: url("http://lorempixel.com/1920/1080");
 	background-size: 100%;
 }
+
+/*    ---------------------------------------    SECTION INFO    */
+
