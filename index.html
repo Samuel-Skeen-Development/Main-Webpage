@@ -5,11 +5,27 @@
 			<title>Samuel Skeen Development and Design</title>
 			
 			<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+			<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
 			<link rel="stylesheet" href="css/main-styles.css">
 		</head>
 		
-		<body >
+		<body ng-controller="MainController as mc">
+			<header>
+				<md-button class="open-menu-button" ng-click="mc.openMainMenu()" aria-label="Open Main Menu">
+					<span class="fa fa-bars"></span> Main Menu
+				</md-button>
+				
+			</header>
+			
+			<md-sidenav md-is-open="mc.isMainOpen">
+				<div class="main-menu">test</div>
+			</md-sidenav>
+			
 			<ng-view></ng-view>
+			
+			<footer>
+				
+			</footer>
 			
 			<script src="bower_components/angular/angular.min.js"></script>
 			<script src="bower_components/angular-route/angular-route.min.js"></script>
@@ -20,6 +36,8 @@
 			<script src="bower_components/angularfire/dist/angularfire.min.js"></script>
 			<script src="js/angular-perfect-parallax.js"></script>
 			<script src="js/app.js"></script>
+			<script src="js/maincontroller.js"></script>
+			<script src="js/mainservice.js"></script>
 			<script src="views/home/home-controller.js"></script>
 			<script src="views/gallery/gallery-controller.js"></script>
 		</body>
