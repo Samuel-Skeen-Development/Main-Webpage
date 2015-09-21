@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-	<html lang="en">
+	<html lang="en" ng-app="MainApp">
 		<head>
 			<meta charset="UTF-8">
 			<title>Samuel Skeen Development and Design</title>
 			
-			<link rel="stylesheet" href="bower_components/angular-material/angular-material.js">
+			<link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
 			<link rel="stylesheet" href="css/main-styles.css">
 		</head>
 		
-		<body ng-controller="MainController">
-			
+		<body >
+			<ng-view></ng-view>
 			
 			<script src="bower_components/angular/angular.min.js"></script>
 			<script src="bower_components/angular-route/angular-route.min.js"></script>
@@ -19,5 +19,7 @@
 			<script src="bower_components/firebase/firebase.js"></script>
 			<script src="bower_components/angularfire/dist/angularfire.min.js"></script>
 			<script src="js/app.js"></script>
+			<script src="views/home/home-controller.js"></script>
+			<script src="views/gallery/gallery-controller.js"></script>
 		</body>
 </html>
