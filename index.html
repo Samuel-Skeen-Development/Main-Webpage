@@ -12,13 +12,19 @@
 		<body ng-controller="MainController as mc">
 			<header>
 				<md-button class="open-menu-button" ng-click="mc.openMainMenu()" aria-label="Open Main Menu">
-					<span class="fa fa-bars"></span> Main Menu
+					<span class="fa fa-bars"></span> <span class="small-screen-closed">Main Menu</span>
 				</md-button>
 				
 			</header>
 			
 			<md-sidenav md-is-open="mc.isMainOpen">
-				<div class="main-menu">test</div>
+				<div class="main-menu">
+					<nav aria-label="Home Page"><a href="#/home"><md-button ng-click="mc.closeMainMenu()" class="main-menu-button">Home</md-button></a></nav>
+					<nav aria-label="Gallery"><a href="#/gallery"><md-button ng-click="mc.closeMainMenu()" class="main-menu-button">Gallery</md-button></a></nav>
+					<nav aria-label="Home Page"><a href="#/about-me"><md-button ng-click="mc.closeMainMenu()" class="main-menu-button">About Me</md-button></a></nav>
+					<nav aria-label="Contact Us"><a href="#/contact-me"><md-button ng-click="mc.closeMainMenu()" class="main-menu-button">Contact Me</md-button></a></nav>
+					<nav aria-label="Login"><a href="#/login"><md-button ng-click="mc.closeMainMenu()" class="main-menu-button">Login</md-button></a></nav>
+				</div>
 			</md-sidenav>
 			
 			<ng-view></ng-view>
