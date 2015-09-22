@@ -5,7 +5,7 @@
 	
 	<section class="registration-container flex-container">
 		<div class="page-center registration-box">
-			<form>
+			<form  ng-show="vm.step === 1">
 				<md-input-container>
 					<label for="vm.email">Email</label>
 					<input type="text" ng-model="vm.email" required="">
@@ -16,13 +16,74 @@
 					<input type="password" ng-model="vm.password" required="">
 				</md-input-container>
 				
-				<input type="submit" ng-click="vm.validateForm()" value="Login" class="md-button md-primary md-raised">
+				<md-input-container>
+					<label for="vm.confirmPassword">Confirm your password</label>
+					<input type="password" ng-model="vm.confirmPassword" required="">
+				</md-input-container>
 				
-				<div class="pull-right">
-					<a href="#/forgot-password">Forgot password?</a>
-				</div>
+				<input type="submit" ng-click="vm.submitNewUser()" value="Submit" class="md-button md-primary md-raised">
+			</form>
+			
+			
+			
+			<form  ng-show="vm.step === 2">
+				<md-input-container>
+					<label for="vm.username">Username</label>
+					<input type="text" ng-model="vm.username" required="">
+				</md-input-container>
 				
-				<p>In order to get an account, you will need to submit a request to the administrator on the <a href="#/contact-me">Contact Me</a> page, which is also a great place to ask any questions you may have.</p>
+				<md-input-container>
+					<label for="vm.userFirstName">First Name</label>
+					<input type="text" ng-model="vm.userFirstName" required="">
+				</md-input-container>
+				
+				<md-input-container>
+					<label for="vm.userLastName">Last Name</label>
+					<input type="text" ng-model="vm.userLastName" required="">
+				</md-input-container>
+				
+				<input type="submit" ng-click="vm.addNewUserData()" value="Submit" class="md-button md-primary md-raised">
+			</form>
+			
+			
+			
+			<form  ng-show="vm.step === 3">
+				<input type="checkbox" ng-model="vm.optOut_Questions"> Check here if you currently want to opt out of security questions
+				
+				
+				<md-input-container>
+					<label for="vm.securityQuestionOne">Security Question 1</label>
+					<input type="text" ng-model="vm.securityQuestionOne" ng-required="vm.optOut_questions">
+				</md-input-container>
+				
+				<md-input-container>
+					<label for="vm.securityAnswerOne">Answer</label>
+					<input type="text" ng-model="vm.securityAnswerOne" ng-required="vm.optOut_questions">
+				</md-input-container>
+				<hr><!------------------------------------------------------->
+				
+				<md-input-container>
+					<label for="vm.securityQuestionTwo">Security Question 2</label>
+					<input type="text" ng-model="vm.securityQuestionTwo">
+				</md-input-container>
+				
+				<md-input-container>
+					<label for="vm.securityAnswerTwo">Answer</label>
+					<input type="text" ng-model="vm.securityAnswerTwo">
+				</md-input-container>
+				<hr><!------------------------------------------------------->
+				
+				<md-input-container>
+					<label for="vm.securityQuestionThree">Security Question 3</label>
+					<input type="text" ng-model="vm.securityQuestionThree">
+				</md-input-container>
+				
+				<md-input-container>
+					<label for="vm.securityAnswerThree">Answer</label>
+					<input type="text" ng-model="vm.securityAnswerThree">
+				</md-input-container>
+				
+				<input type="submit" ng-click="vm.addNewUserData()" value="Submit" class="md-button md-primary md-raised">
 			</form>
 		</div>
 	</section>

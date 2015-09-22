@@ -36,7 +36,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             controllerAs: 'vm',
             resolve: {
                 'currentAuth': ['Auth', function(Auth) {
-                    return Auth.$waitForAuth();
+                    return Auth.authObj.$waitForAuth();
+                }],
+                'authData': ['Auth', function(Auth) {
+                    return Auth.authObj.$getAuth();
                 }]
             }
         })
@@ -48,12 +51,28 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         .when('/login', {
             templateUrl: '../views/login/login.html',
             controller: 'LoginController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                'getAuthInfo': ['Auth', '$location', function(Auth, $location) {
+                    Auth.authData = Auth.authObj.$getAuth();
+                    if (Auth.authData) {
+                        $location.path('#/home');
+                    }
+                }]
+            }
         })
         .when('/registration', {
             templateUrl: '../views/registration/registration.html',
             controller: 'RegistrationController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                'getAuthInfo': ['Auth', '$location', function(Auth, $location) {
+                    Auth.authData = Auth.authObj.$getAuth();
+                    if (Auth.authData) {
+                        $location.path('#/home');
+                    }
+                }]
+            }
         })
         .otherwise({ redirectTo: '/home' });
 		

@@ -4,6 +4,8 @@ body, html, .parallax-image {
 	
 	min-height: inherit;
 	max-height: 100%;
+	
+	cursor: url
 }
 
 html, section {
@@ -22,8 +24,12 @@ a:link {
 	text-decoration: none;
 }
 
+a:visited {
+	color: blue;
+}
+
 a:hover {
-	cursor: url('../assets/cursors/airbomb.ani');
+	text-decoration: uunderline;
 }
 
 .pull-right {
@@ -150,7 +156,7 @@ md-sidenav {
 		height: 1px;
 		width: 100%;
 		
-		position: absolute;
+		position: fixed;
 		top: 0;
 		
 		z-index: 78;
@@ -166,6 +172,13 @@ md-sidenav {
 	background-image: url("http://lorempixel.com/1920/1080/nature");
 	
 	height: 70%;
+}
+
+
+/*    -----------------------------------------    GALLERY VIEW    */
+
+.view-containter > p {
+	font-size: 70pt;
 }
 
 
@@ -200,9 +213,23 @@ md-sidenav {
 		
 		width: 500px;
 		
+		border-radius: 8px;
+	}
+	
+	.login-box {
+		
 		height: 300px;
 		
-		border-radius: 8px;
+	}
+	
+	.registration-box {
+		position: relative;
+		
+		top: 75px;
+		
+		margin: 100px 0;
+		
+		height: 700px;
 	}
 		
 		md-input-container {
