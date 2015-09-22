@@ -4,4 +4,5 @@ app.service('MainService', [function () {
         serv.rootRef = new Firebase('https://sam-skeen-dev-web.firebaseio.com/site/');
         serv.authRef = new Firebase(serv.rootRef + 'users');
         serv.galleryRef = new Firebase(serv.rootRef + 'gallery');
+        serv.usersRef = serv.authRef;
     }]);

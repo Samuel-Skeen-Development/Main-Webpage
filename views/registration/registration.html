@@ -1,10 +1,10 @@
 <div class="view-container">
 	<div class="title-container">
-		<div class="page-title">Login</div>
+		<div class="page-title">Register</div>
 	</div>
 	
-	<section class="login-container flex-container">
-		<div class="page-center login-box">
+	<section class="registration-container flex-container">
+		<div class="page-center registration-box">
 			<form>
 				<md-input-container>
 					<label for="vm.email">Email</label>
@@ -16,15 +16,13 @@
 					<input type="password" ng-model="vm.password" required="">
 				</md-input-container>
 				
-				<input type="submit" ng-click="vm.validateForm" value="Login" class="md-button md-primary md-raised">
+				<input type="submit" ng-click="vm.validateForm()" value="Login" class="md-button md-primary md-raised">
 				
 				<div class="pull-right">
 					<a href="#/forgot-password">Forgot password?</a>
 				</div>
 				
 				<p>In order to get an account, you will need to submit a request to the administrator on the <a href="#/contact-me">Contact Me</a> page, which is also a great place to ask any questions you may have.</p>
-				
-				<p><a href="#/registration">Temp link to register for first time</a></p>
 			</form>
 		</div>
 	</section>

@@ -50,6 +50,11 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             controller: 'LoginController',
             controllerAs: 'vm'
         })
+        .when('/registration', {
+            templateUrl: '../views/registration/registration.html',
+            controller: 'RegistrationController',
+            controllerAs: 'vm'
+        })
         .otherwise({ redirectTo: '/home' });
 		
     // $locationProvider.html5Mode({
