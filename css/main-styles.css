@@ -101,10 +101,20 @@ md-sidenav {
 		
 
 
-/*    -----------------------------------------     HOME STYLES    */
+/*    -------------------------------------------     HOME VIEW    */
 
 .home-parallax {
 	height: 70%;
+}
+
+
+/*    -------------------------------------------    LOGIN VIEW    */
+
+.login-container {
+	position: relative;
+	
+	height: 100%;
+	width: 100%; 
 }
 
 

@@ -6,7 +6,17 @@ app.controller('MainController', ['$location', '$firebaseObject', '$firebaseArra
 	
 	vm.test = 'test';
 	
+	vm.isMainOpen = false;
+	
+	vm.openMainMenu = function() {
+		vm.isMainOpen = true;
+	};
+	
+	vm.closeMainMenu = function() {
+		vm.isMainOpen = false;
+	};
+	
 	vm.testThis = function(data) {
 		console.log(data);
-	}
+	};
 }]);
