@@ -23,7 +23,9 @@
 					<nav aria-label="Home Page"><a href="#/about-me"><md-button ng-click="mc.closeMainMenu()" class="main-menu-button">About Me</md-button></a></nav>
 					<nav aria-label="Gallery"><a href="#/gallery"><md-button ng-click="mc.closeMainMenu()" class="main-menu-button">Gallery</md-button></a></nav>
 					<nav aria-label="Contact Us"><a href="#/contact-me"><md-button ng-click="mc.closeMainMenu()" class="main-menu-button">Contact Me</md-button></a></nav>
-					<nav aria-label="Login"><a href="#/login"><md-button ng-click="mc.closeMainMenu()" class="main-menu-button">Login</md-button></a></nav>
+					<nav aria-label="Admin" ng-show="mc.getAdmin()"><a href="#/admin"><md-button ng-click="mc.closeMainMenu()" class="main-menu-button">Admin</md-button></a></nav>
+					<nav aria-label="Login" ng-show="!mc.getLoggedIn()"><a href="#/login"><md-button ng-click="mc.closeMainMenu()" class="main-menu-button">Login</md-button></a></nav>
+					<nav aria-label="Logout" ng-show="mc.getLoggedIn()"><a href="#/home"><md-button ng-click="mc.logout()" class="main-menu-button">Logout</md-button></a></nav>
 				</div>
 			</md-sidenav>
 			

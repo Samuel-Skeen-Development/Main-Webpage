@@ -3,7 +3,11 @@ app.service('Auth', ['$firebaseAuth', 'MainService', function($firebaseAuth, Mai
 	
 	serv.authObj = $firebaseAuth(MainService.authRef);
 	
-	serv.authObj.$onAuth(function(authData) {
+	// serv.authObj.$onAuth(function(authData) {
 		
-	});
+	// });
+	
+	serv.authData;
+	
+	serv.isLoggedIn = false;
 }]);
