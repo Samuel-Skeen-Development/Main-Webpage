@@ -33,6 +33,11 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                     }],
                 'authData': ['Auth', function (Auth) {
                         return Auth.authObj.$getAuth();
+                    }],
+                'galleryItems': ['MainService', '$firebaseArray', function (MainService, $firebaseArray) {
+                        return $firebaseArray(MainService.galleryRef).$loaded(function (data) {
+                            return data;
+                        });
                     }]
             }
         })
