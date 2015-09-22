@@ -1,6 +1,6 @@
 <div class="view-container">
-	<section class="login-container">
-		<div class="page-center">
+	<section class="login-container flex-container">
+		<div class="page-center login-box">
 			<form>
 				<md-input-container>
 					<label for="vm.email">Email</label>
@@ -12,7 +12,13 @@
 					<input type="password" ng-model="vm.password">
 				</md-input-container>
 				
-				<p>In order to get an account, you will need to contact the administrator on the <a href="#/contact-me">Contact Me</a> page, which is also a great place to ask any questions you may have.</p>
+				<input type="submit" ng-click="vm.validateForm" value="Login" class="md-button md-primary md-raised">
+				
+				<div class="pull-right">
+					<a href="#/forgot-password">Forgot password?</a>
+				</div>
+				
+				<p>In order to get an account, you will need to submit a request to the administrator on the <a href="#/contact-me">Contact Me</a> page, which is also a great place to ask any questions you may have.</p>
 			</form>
 		</div>
 	</section>

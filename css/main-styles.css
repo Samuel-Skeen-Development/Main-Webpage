@@ -1,6 +1,9 @@
 body, html, .parallax-image {
 	width: 100%;
 	height: 100%;
+	
+	min-height: inherit;
+	max-height: 100%;
 }
 
 html, section {
@@ -15,9 +18,28 @@ html, section {
 	font-size: 70pt;
 }
 
+a:link {
+	text-decoration: none;
+}
+
+.pull-right {
+	text-align: center;
+}
 
 
-/*    -----------------------------------------    HEADER INFO    */
+/*    ------------------------------    DEFAULT FLEX PROPERTIES    */
+
+.flex-container {
+	display: flex;
+}
+
+	.flex-box {
+		outline: 2px solid black;
+	}
+
+
+
+/*    ------------------------------------------    HEADER INFO    */
 
 header, md-sidenav {
 	position: fixed;
@@ -46,7 +68,7 @@ header {
 
 
 
-/*    ---------------------------------------    PARALLAX INFO    */
+/*    ----------------------------------------    PARALLAX INFO    */
 
 .wrapper * {
 	position: relative;
@@ -111,11 +133,35 @@ md-sidenav {
 /*    -------------------------------------------    LOGIN VIEW    */
 
 .login-container {
-	position: relative;
+	position: absolute;
 	
 	height: 100%;
-	width: 100%; 
+	width: 100%;
+	
+	justify-content: space-around;
+	
+	align-items: center; 
 }
+
+	.login-box {
+		padding: 25px 22px;
+		
+		background-color: white;
+		
+		width: 500px;
+		
+		height: 300px;
+		
+		border-radius: 8px;
+	}
+		
+		md-input-container {
+			font-size: 16pt;
+		}
+		
+	.login-box > form > .pull-right {
+		margin: 18px 0;
+	}
 
 
 /*    ---------------------------------     BEGIN MEDIA QUERIES    */
