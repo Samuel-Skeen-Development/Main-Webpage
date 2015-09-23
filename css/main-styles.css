@@ -183,6 +183,10 @@ md-sidenav {
 	color: white;
 }
 
+#input_0 button {
+	outline: 2px solid black;
+}
+
 .big-black-square {
 	width: 300px;
 	height: 300px;

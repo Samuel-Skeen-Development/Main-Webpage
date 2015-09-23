@@ -13,13 +13,32 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
         .when('/home', {
             templateUrl: '../views/home/home.html',
             controller: 'HomeController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {
+                // 'currentUser': ['Auth', '$firebaseArray', 'MainService', function(Auth, $firebaseArray, MainService) {
+                //     var users = $firebaseArray(MainService.usersRef),
+                //         currentAuth = Auth.authObj.$getAuth(),
+                //         result;
+                    
+                //     if (currentAuth) {
+                //         for (var i = 0; i < users.length; i++) {
+                //             if (users[i].uid === currentAuth.uid) {
+                //                 result = users[i];
+                //             }
+                //         }
+                //     }
+                    
+                //     return result;
+                // }]
+            }
         })
+        
 		.when('/about-me', {
 			templateUrl: '../views/about-me/about-me.html',
 			controller: 'AboutMeController',
 			controllerAs: 'vm'
 		})
+        
         .when('/gallery', {
             templateUrl: '../views/gallery/gallery.html',
             controller: 'GalleryController',
@@ -30,6 +49,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 // }
             }
         })
+        
         .when('/gallery/edit', {
             templateUrl: '../views/gallery/gallery-edit.html',
             controller: 'EditGalleryController',
@@ -42,17 +62,73 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                     return Auth.authObj.$getAuth();
                 }],
                 'galleryItems': ['MainService', '$firebaseArray', function(MainService, $firebaseArray) {
-                    return $firebaseArray(MainService.galleryRef).$loaded(function(data) {
+                    return $firebaseArray(MainService.galleryRef).$loaded().then(function(data) {
                         return data;
                     });
                 }]
             }
         })
+        
 		.when('/contact-me', {
 			templateUrl: '../views/contact-me/contact-me.html',
 			controller: 'ContactMeController',
 			controllerAs: 'vm'
 		})
+        
+        .when('/account', {
+            templateUrl: '../views/account/account.html',
+            controller: 'AccountController',
+            controllerAs: 'vm',
+            resolve: {
+                'currentAuth': ['Auth', function(Auth) {
+                    return Auth.authObj.$waitForAuth();
+                }],
+                'currentUser': ['Auth', '$firebaseArray', 'MainService', function(Auth, $firebaseArray, MainService) {
+                    var users = $firebaseArray(MainService.usersRef),
+                        currentAuth = Auth.authObj.$getAuth(),
+                        result;
+                    
+                    users.$loaded()
+                        .then(function() {
+                            for (var i = 0; i < users.length; i++) {
+                                if (currentAuth.uid === users[i].uid) {
+                                    result = users[i];
+                                }
+                            }
+                        })
+                    
+                    return result;
+                }]
+            }
+        })
+        
+        .when('/admin', {
+            templateUrl: '../views/admin/admin.html',
+            controller: 'AdministratorController',
+            controllerAs: 'vm',
+            resolve: {
+                'currentAuth': ['Auth', function(Auth) {
+                    return Auth.authObj.$waitForAuth();
+                }],
+                'currentUser': ['Auth', '$firebaseArray', 'MainService', function(Auth, $firebaseArray, MainService) {
+                    var users = $firebaseArray(MainService.usersRef),
+                        currentAuth = Auth.authObj.$getAuth(),
+                        result;
+                    
+                    users.$loaded()
+                        .then(function() {
+                            for (var i = 0; i < users.length; i++) {
+                                if (currentAuth.uid === users[i].uid) {
+                                    result = users[i];
+                                }
+                            }
+                        })
+                    
+                    return result;
+                }]
+            }
+        })
+        
         .when('/login', {
             templateUrl: '../views/login/login.html',
             controller: 'LoginController',
@@ -66,6 +142,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 }]
             }
         })
+        
         .when('/registration', {
             templateUrl: '../views/registration/registration.html',
             controller: 'RegistrationController',
@@ -79,6 +156,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                 }]
             }
         })
+        
         .otherwise({ redirectTo: '/home' });
 		
     // $locationProvider.html5Mode({

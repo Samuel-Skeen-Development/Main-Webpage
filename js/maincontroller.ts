@@ -1,8 +1,15 @@
 /// <reference path="app.ts" />
 /// <reference path="mainservice.ts" />
 
-app.controller('MainController', ['$location', '$firebaseObject', '$firebaseArray', 'Auth', function($location, $firebaseObject, $firebaseArray, Auth) {
-	var vm = this;
+app.controller('MainController', ['$location', '$firebaseObject', '$firebaseArray', 'Auth', 'MainService', function($location, $firebaseObject, $firebaseArray, Auth, MainService) {
+	
+	// ---------------------------------    DECLARE PRIVATE VARIABLES
+	
+	var vm = this,
+		users = $firebaseArray(MainService.usersRef),
+		currentUser;
+		
+	// ----------------------------------    DECLARE PUBLIC VARIABLES
 	
 	vm.test = 'test';
 	
@@ -12,6 +19,22 @@ app.controller('MainController', ['$location', '$firebaseObject', '$firebaseArra
 	vm.authData = Auth.authObj.$getAuth();
 	
 	
+	// ----------------    INITIALIZING THE CURRENTUSER VAR ON STARTUP
+	function initializeCurrentUser (data) {
+		if (vm.authData) {
+			for (var i = 0; i < users.length; i++) {
+				if (users[i].uid === vm.authData.uid) {
+					currentUser = users[i];
+					// console.log(currentUser);
+					break;
+				}
+			}
+		}
+	}
+	
+	users.$loaded().then(function() {
+		initializeCurrentUser(vm.authData);
+	})
 	// ------------------------------------    AUTHENTICATION LISTENER
 	
 	Auth.authObj.$onAuth(function(authData) {
@@ -20,16 +43,19 @@ app.controller('MainController', ['$location', '$firebaseObject', '$firebaseArra
 		// console.log(Auth.isLoggedIn);
 		
 		if (vm.authData) {
-			Auth.isLoggedIn = true;
-			// console.log(Auth.isLoggedIn);
+			initializeCurrentUser(vm.authData);
 		} else {
-			Auth.isLoggedIn = false;
-			// console.log(Auth.isLoggedIn);
+			currentUser = undefined;
 		}
 	});
 	
 	
-	// ----------------------------------  METHOD DECLARATIONS
+	// ----------------------------------    PUBLIC METHOD DECLARATIONS
+	
+	vm.testThis = function(data) {
+		console.log(data);
+	};
+	
 	
 	vm.openMainMenu = function() {
 		vm.isMainOpen = true;
@@ -39,27 +65,26 @@ app.controller('MainController', ['$location', '$firebaseObject', '$firebaseArra
 		vm.isMainOpen = false;
 	};
 	
+	
 	vm.logout = function() {
 		vm.isMainOpen = false;
 		
 		Auth.authObj.$unauth();
 	};
 	
-	vm.testThis = function(data) {
-		console.log(data);
-	};
+	
+	// Testing for privileges
 	
 	vm.getAdmin = function() {
-		if (vm.authData) {
-			
-			
-			vm.authData.uid;
-			
-		}
+		// console.log(currentUser);
+		
+		if (currentUser) {
+			return currentUser.isAdmin;
+		} else return false;
 	};
 	
 	vm.getLoggedIn = function() {
-		return Auth.isLoggedIn;
+		return currentUser ? true : false;
 	};
 	
 }]);

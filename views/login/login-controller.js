@@ -11,10 +11,11 @@ app.controller('LoginController', ['Auth', '$location', function(Auth, $location
 				password: vm.password
 			})
 				.then(function(authData) {
-					Auth.authData = authData;
-					console.log("Success", Auth.authData);
+					// Auth.authData = authData;
+					// console.log("Success", Auth.authData);
 					
 					$location.path('#/home');
+					
 				}, function(error) {
 					console.error(error);
 				});

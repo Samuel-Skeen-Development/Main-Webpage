@@ -10,7 +10,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             .when('/home', {
             templateUrl: '../views/home/home.html',
             controller: 'HomeController',
-            controllerAs: 'vm'
+            controllerAs: 'vm',
+            resolve: {}
         })
             .when('/about-me', {
             templateUrl: '../views/about-me/about-me.html',
@@ -35,7 +36,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                         return Auth.authObj.$getAuth();
                     }],
                 'galleryItems': ['MainService', '$firebaseArray', function (MainService, $firebaseArray) {
-                        return $firebaseArray(MainService.galleryRef).$loaded(function (data) {
+                        return $firebaseArray(MainService.galleryRef).$loaded().then(function (data) {
                             return data;
                         });
                     }]
@@ -45,6 +46,50 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             templateUrl: '../views/contact-me/contact-me.html',
             controller: 'ContactMeController',
             controllerAs: 'vm'
+        })
+            .when('/account', {
+            templateUrl: '../views/account/account.html',
+            controller: 'AccountController',
+            controllerAs: 'vm',
+            resolve: {
+                'currentAuth': ['Auth', function (Auth) {
+                        return Auth.authObj.$waitForAuth();
+                    }],
+                'currentUser': ['Auth', '$firebaseArray', 'MainService', function (Auth, $firebaseArray, MainService) {
+                        var users = $firebaseArray(MainService.usersRef), currentAuth = Auth.authObj.$getAuth(), result;
+                        users.$loaded()
+                            .then(function () {
+                            for (var i = 0; i < users.length; i++) {
+                                if (currentAuth.uid === users[i].uid) {
+                                    result = users[i];
+                                }
+                            }
+                        });
+                        return result;
+                    }]
+            }
+        })
+            .when('/admin', {
+            templateUrl: '../views/admin/admin.html',
+            controller: 'AdministratorController',
+            controllerAs: 'vm',
+            resolve: {
+                'currentAuth': ['Auth', function (Auth) {
+                        return Auth.authObj.$waitForAuth();
+                    }],
+                'currentUser': ['Auth', '$firebaseArray', 'MainService', function (Auth, $firebaseArray, MainService) {
+                        var users = $firebaseArray(MainService.usersRef), currentAuth = Auth.authObj.$getAuth(), result;
+                        users.$loaded()
+                            .then(function () {
+                            for (var i = 0; i < users.length; i++) {
+                                if (currentAuth.uid === users[i].uid) {
+                                    result = users[i];
+                                }
+                            }
+                        });
+                        return result;
+                    }]
+            }
         })
             .when('/login', {
             templateUrl: '../views/login/login.html',
