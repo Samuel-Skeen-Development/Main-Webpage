@@ -30,7 +30,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             controllerAs: 'vm',
             resolve: {
                 'currentAuth': ['Auth', function (Auth) {
-                        return Auth.authObj.$waitForAuth();
+                        console.log(Auth.authObj.$waitForAuth());
+                        return Auth.authObj.$requireAuth();
                     }],
                 'authData': ['Auth', function (Auth) {
                         return Auth.authObj.$getAuth();
@@ -53,7 +54,8 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             controllerAs: 'vm',
             resolve: {
                 'currentAuth': ['Auth', function (Auth) {
-                        return Auth.authObj.$waitForAuth();
+                        console.log(Auth.authObj.$getAuth());
+                        return Auth.authObj.$requireAuth();
                     }],
                 'currentUser': ['Auth', '$firebaseArray', 'MainService', function (Auth, $firebaseArray, MainService) {
                         var users = $firebaseArray(MainService.usersRef), currentAuth = Auth.authObj.$getAuth(), result;
