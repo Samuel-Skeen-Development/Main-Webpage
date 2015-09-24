@@ -3,20 +3,53 @@
 		<div class="page-title">Account Settings</div>
 	</div>
 	
-	<article class="account-settings-container" layout="row">
-		<aside class="settings-tabs" >
-			<div class="settings-tab">Public Profile</div>
-			<div class="settings-tab">Edit Profile</div>
-			<div class="settings-tab">Security</div>
-			<div class="settings-tab">Messaging Options</div>
+	<article class="account-settings-container" layout="column">
+		<aside class="settings-tabs" layout="row">
+			<md-button class="settings-tab" ng-class="vm.isSelected(1)" ng-click="vm.setTab(1)" flex>
+				Public Profile
+			</md-button>
+			
+			<md-button class="settings-tab" ng-class="vm.isSelected(2)" ng-click="vm.setTab(2)" flex>
+				Edit Profile
+			</md-button>
+			
+			<md-button class="settings-tab" ng-class="vm.isSelected(3)" ng-click="vm.setTab(3)" flex>
+				Security
+			</md-button>
+			
+			<md-button class="settings-tab" ng-class="vm.isSelected(4)" ng-click="vm.setTab(4)" flex>
+				Messaging Options
+			</md-button>
 		</aside>
 		
 		<section class="settings-view" flex>
+			<div ng-if="vm.tabNum === 1">
+				<p class="tab-intro centering centered">
+					Below is how your profile looks to others. In order to change any content, click the "Edit Profile".  If you would like to change what is seen publicly, click on the "Security" tab instead.
+				</p>
+				<pub-profile-tab></pub-profile-tab>
+			</div>
 			
-			<pub-profile-tab ng-if="vm.tabNum === 1"></pub-profile-tab>
-			<edit-profile-tab ng-if="vm.tabNum === 2"></edit-profile-tab>
-			<security-tab ng-if="vm.tabNum === 3"></security-tab>
-			<messaging-opt-tab ng-if="vm.tabNum === 4"></messaging-opt-tab>
+			<div ng-if="vm.tabNum === 2">
+				<p class="tab-intro centering centered">
+					Below is how your profile looks to others. In order to change anything, click on the item you would like to change.
+				</p>
+				<edit-profile-tab></edit-profile-tab>
+			</div>
+			
+			<div ng-if="vm.tabNum === 3">
+				<p class="tab-intro centering centered">
+					Below is how your profile looks to others. In order to change anything, click the "Edit Profile" tab above, then click on the item you would like to change
+				</p>
+				<security-tab></security-tab>
+			</div>
+			
+			<div ng-if="vm.tabNum === 4">
+				<p class="tab-intro centering centered">
+					Below is how your profile looks to others. In order to change anything, click on the item you would like to change.
+				</p>
+				<messaging-opt-tab></messaging-opt-tab>
+			</div>
 		</section>
 	</article>
 	

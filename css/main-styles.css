@@ -6,16 +6,18 @@ body, html, .parallax-image {
 	max-height: 100%;
 }
 
-html, section {
+html, body, section, ng-view, view-container {
 	background-color: #292C30;
 }
 
 .centering {
-	width: 60%;
+	width: 80%;
 	
 	margin: 0 auto;
-	
-	font-size: 70pt;
+}
+
+.centered {
+	text-align: center;
 }
 
 a:link {
@@ -164,8 +166,12 @@ md-sidenav {
 	}
 	
 .view-container {
-	height: 100%;
+	height: 90%;
 	width: 100%;
+	
+	overflow: auto;
+	
+	padding-top: 56px;
 }
 
 
@@ -182,7 +188,7 @@ md-sidenav {
 /*    -----------------------------------------    GALLERY VIEW    */
 
 .gallery-welcome {
-	margin-top: 70px; 
+	padding-top: 70px; 
 	
 	color: white;
 }
@@ -218,8 +224,47 @@ md-sidenav {
 	
 	position: relative;
 	
-	flex-direction: column;
+	/*flex-direction: column;*/
 }
+
+	.settings-tabs {
+		background-color: white;
+	}
+	
+		.settings-tab {
+			margin: 0;
+			
+			padding: 6px 14px; 
+			
+			border-radius: 0;
+			border-bottom: 8px solid white;
+			/*width: 25%;*/
+			
+			font-weight: bolder;
+			
+			transition: all linear .1s;
+		}
+		
+		.settings-tab:hover {
+			border-bottom-color: rgba(158,158,158,0.0);
+		}
+		
+		.selected-tab {
+			border-bottom: 8px solid #37ABA0;
+		}
+		
+		.selected-tab:hover {
+			border-bottom: 8px solid #37ABA0;
+		}
+	
+	.tab-intro {
+		width: 75%;
+		max-width: 1000px;
+		margin: 20px auto;
+		
+		font-size: 14pt;
+		color: white;
+	}
 
 
 /*    -------------------------------------------    LOGIN VIEW    */
@@ -281,23 +326,59 @@ footer {
 
 .profile-view {
 	width: 80%;
+	max-width: 1000px;
 	
 	font-size: 14pt;
 	
-	margin: 10px auto;
+	margin: 20px auto;
 	
 	background-color: rgba(255, 255, 255, .7);
+	
+	border-radius: 5px;
+	
+	overflow: hidden;
+	
+	/*position: relative;*/
 }
-
-.avatar-large {
-	max-height: 150px;
-	max-width: 150px;
-}
+	
+	.profile-view > div {
+		padding: 20px;
+		
+		position: relative;
+	}
+		
+		.avatar-large {
+			height: 150px;
+			width: 150px;
+			
+			margin: 0 auto;
+		}
+		
+		.username-profile {
+			background-color: #B99429;
+			
+			font-size: 24pt;
+			
+			margin: 0;
+			padding: 20px;
+			
+			border-bottom-left-radius: 5px;
+			
+			position: absolute;
+			left: 0;
+			top: 0;
+			
+			width: 100%;
+		}
+		
+		.public-profile-info {
+			margin-top: 45px;
+		}
 
 
 /*    ---------------------------------     BEGIN MEDIA QUERIES    */
 	
-@media (max-width: 1000px) {
+@media (max-width: 959px) {
 	.small-screen-closed {
 		display: none;
 	}
@@ -305,5 +386,16 @@ footer {
 	.open-menu-button {
 		font-size: 70pt;
 		/*background-color: blue;*/
+	}
+	
+	.avatar-large {
+		width: 50%;
+		height: auto;
+	}
+	
+	.username-profile {
+		
+		
+		border-bottom-left-radius: 0;
 	}
 }

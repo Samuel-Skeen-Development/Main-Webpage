@@ -1,22 +1,29 @@
 <div class="tab-view">
 	<md-card class="profile-view" layout-gt-md="row" layout-md="column" layout-sm="column">
-		<div flex="33" layout="column">
+		<div class="left-profile" flex layout="column">
 			<img alt="User Avatar" ng-src="{{ vm.currentUser.avatar }}" class="avatar-large">
-			, stats
+			
+			<div class="small-screen-closed stats-box">
+				stats will go here when they are available
+			</div>
 		</div>
 		
-		<div flex layout="column">
-			<p>
-				{{ vm.currentUser.username  || "no username defined" }}<br>
-				{{ vm.currentUser.email || "no email defined" }}
-			</p>
-			<p>
-				{{ vm.currentUser.website.value || "no website defined" }}<br>
-				{{ vm.currentUser.bio || " &#062;&#062; This user currently doesn't have any life.  Otherwise, their bio would show up here. &#060;&#060; " }}<br>
-				{{ vm.currentUser.facebookUrl || "Facebook profile url not defined" }}<br>
-				{{ vm.currentUser.twitterUrl || "no Twitter profile url defined (as it should be!!!)" }}<br>
-				{{ vm.currentUser.linkedinUrl || "no LinkedIn profile url defined" }}
-			</p>
+		
+		<div class="right-profile" flex="75" layout="column">
+			<h1 class="username-profile">{{ vm.currentUser.username  || "no username defined" }}</h1>
+			
+			<div class="large-screen-closed stats-box">
+				stats will go here when they are available
+			</div>
+			
+			<div class="public-profile-info">
+				<p>{{ vm.currentUser.email || "no email defined" }}</p>
+				<p>{{ vm.currentUser.website.value || "no website defined" }}</p>
+				<p>{{ vm.currentUser.bio || " &#062;&#062; This user currently doesn't have any life.  Otherwise, their bio would show up here. &#060;&#060; " }}</p>
+				<p>{{ vm.currentUser.facebookUrl || "Facebook profile url not defined" }}</p>
+				<p>{{ vm.currentUser.twitterUrl || "no Twitter profile url defined" }}</p>
+				<p>{{ vm.currentUser.linkedinUrl || "no LinkedIn profile url defined" }}</p>
+			</div>
 		</div>
 	</md-card>
 </div>
