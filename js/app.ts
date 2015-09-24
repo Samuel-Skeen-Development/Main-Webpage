@@ -90,11 +90,13 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
                     
                     users.$loaded()
                         .then(function() {
-                            for (var i = 0; i < users.length; i++) {
-                                if (currentAuth.uid === users[i].uid) {
-                                    result = users[i];
+                            if (currentAuth) {
+                                for (var i = 0; i < users.length; i++) {
+                                    if (currentAuth.uid === users[i].uid) {
+                                        result = users[i];
+                                    }
                                 }
-                            }
+                            } else result = undefined;
                         })
                     
                     return result;

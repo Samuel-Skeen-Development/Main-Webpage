@@ -3,8 +3,23 @@
 		<div class="page-title">Account Settings</div>
 	</div>
 	
-	article[class="account-settings-container flex-container"]>(aside.settings-tabs)+(section.settings-view)
-	
+	<article class="account-settings-container flex-container">
+		<aside class="settings-tabs">
+			<div class="settings-tab">Public Profile</div>
+			<div class="settings-tab">Edit Profile</div>
+			<div class="settings-tab">Security</div>
+			<div class="settings-tab">Messaging Options</div>
+		</aside>
+		
+		<section class="settings-view">
+			<div class="big-black-square"></div>
+			
+			<pub-profile-tab ng-if="vm.tabNum === 1"></pub-profile-tab>
+			<edit-profile-tab ng-if="vm.tabNum === 2"></edit-profile-tab>
+			<security-tab ng-if="vm.tabNum === 3"></security-tab>
+			<messaging-opt-tab ng-if="vm.tabNum === 4"></messaging-opt-tab>
+		</section>
+	</article>
 	
 	<!--making sure displaying works and testing file uploads-->
 	
