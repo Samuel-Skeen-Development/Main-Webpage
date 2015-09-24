@@ -22,11 +22,11 @@ html, body, section, ng-view, view-container {
 
 a:link {
 	text-decoration: none;
-	color: #38ADA3;
+	color: #348ADE;
 }
 
 a:visited {
-	color: #38ADA3;
+	color: #348ADE;
 }
 
 a:hover {
@@ -188,8 +188,6 @@ md-sidenav {
 /*    -----------------------------------------    GALLERY VIEW    */
 
 .gallery-welcome {
-	padding-top: 70px; 
-	
 	color: white;
 }
 
@@ -242,7 +240,7 @@ md-sidenav {
 			
 			font-weight: bolder;
 			
-			transition: all linear .1s;
+			transition: all linear .2s;
 		}
 		
 		.settings-tab:hover {
