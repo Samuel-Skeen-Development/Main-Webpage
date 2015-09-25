@@ -21,7 +21,7 @@
 					<a ng-href="mailto: {{ vm.currentUser.email }}">{{ vm.currentUser.email || "no email defined" }}</a>
 				</p>
 				<p>{{ vm.currentUser.website.value || "no website defined" }}</p>
-				<p>{{ vm.currentUser.bio || " &#062;&#062; This user currently doesn't have any life.  Otherwise, their bio would show up here. &#060;&#060; " }}</p>
+				<p>{{ vm.currentUser.bio || vm.standardBio }}</p>
 				<p>{{ vm.currentUser.facebookUrl || "Facebook profile url not defined" }}</p>
 				<p>{{ vm.currentUser.twitterUrl || "no Twitter profile url defined" }}</p>
 				<p>{{ vm.currentUser.linkedinUrl || "no LinkedIn profile url defined" }}</p>
