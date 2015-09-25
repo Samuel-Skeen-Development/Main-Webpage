@@ -25,7 +25,7 @@ app.directive('pubProfileTab', [function() {
 				getCurrentUser();
 			});
 			
-			vm.standardBio = "This user currently doesn't have any life.  Otherwise, their bio would show up here.";
+			vm.standardBio = "This user currently doesn't have a life.  Otherwise, their bio would show up here.";
 		}],
 		
 		controllerAs: 'vm'

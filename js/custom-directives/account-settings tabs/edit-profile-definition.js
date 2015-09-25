@@ -10,7 +10,7 @@ app.directive('editProfileTab', [function() {
 				users = $firebaseArray(MainService.usersRef);
 			vm.currentUser;
 			
-			vm.standardBio = "This user currently doesn't have any life.  Otherwise, their bio would show up here.";
+			vm.standardBio = "This user currently doesn't have a life.  Otherwise, their bio would show up here.";
 			
 			function getCurrentUser() {
 				if (currentAuth) {
