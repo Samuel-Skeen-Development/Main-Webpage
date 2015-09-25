@@ -12,11 +12,12 @@
 		<div class="right-profile" flex="75" layout="column">
 			<h1 class="username-profile">{{ vm.currentUser.username  || "no username defined" }}</h1>
 			
-			<div class="large-screen-closed stats-box">
-				stats will go here when they are available
-			</div>
 			
 			<div class="public-profile-info">
+				<div class="large-screen-closed stats-box">
+					stats will go here when they are available
+				</div>
+				
 				<p>
 					<a ng-href="mailto: {{ vm.currentUser.email }}">{{ vm.currentUser.email || "no email defined" }}</a>
 				</p>

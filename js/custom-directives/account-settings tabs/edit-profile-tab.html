@@ -12,16 +12,17 @@
 		<div class="right-profile" flex="75" layout="column">
 			<h1 class="username-profile">{{ vm.currentUser.username + " &#062;&#062; click to edit"  || "no username defined" }}</h1>
 			
-			<div class="large-screen-closed stats-box">
-				stats will go here when they are available
-			</div>
 			
 			<div class="edit-profile-info">
+				<div >
+					stats will go here when they are available
+				</div>
+				
 				<div class="to-edit" ng-hide="vm.editModeOn.email" ng-click="vm.editItem('email')" >
 					<a class="dummy-link">{{ vm.tempUser.email || "no email defined; click to add" }}</a>
 				</div>
 				
-				<div class="editing" ng-show="vm.editModeOn.email || true">
+				<div class="editing" ng-show="vm.editModeOn.email">
 					<form>
 						<md-input-container>
 							<label for="vm.tempUser.email">Email</label>
@@ -31,20 +32,21 @@
 						<input type="submit" class="md-button edit-submit-button" ng-click="vm.updateEmail()">
 						<a href="javascript:void(0)" class="cancel-link" ng-click="vm.cancelEdit('email')">Cancel</a>
 					</form>
+					<!--{{ vm.currentUser.email }}-->
 				</div>
 				
 				
-				<div class="to-edit" ng-hide="vm.editModeOn.bio">
+				<div class="to-edit" ng-hide="vm.editModeOn.bio" ng-click="vm.editItem('bio')">
 					{{ vm.currentUser.bio || vm.standardBio + " Click to add." }}
 				</div>
 				
 				
-				<div class="to-edit" ng-hide="vm.editModeOn.facebookUrl">
+				<div class="to-edit" ng-hide="vm.editModeOn.facebookUrl" ng-click="vm.editItem('facebookUrl')">
 					{{ vm.currentUser.facebookUrl || "Facebook profile url not defined; click to add" }}
 				</div>
 				
 				
-				<div class="to-edit" ng-hide="vm.editModeOn.twitterUrl">
+				<div class="to-edit" ng-hide="vm.editModeOn.twitterUrl" ng-click="vm.editItem('twitterUrl')">
 					{{ vm.currentUser.twitterUrl || "no Twitter profile url defined; click to add" }}
 				</div>
 				
