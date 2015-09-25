@@ -1,5 +1,5 @@
 <div class="tab-view">
-	<md-card class="profile-view" layout-gt-md="row" layout-md="column" layout-sm="column">
+	<md-card class="edit-profile-view" layout-gt-md="row" layout-md="column" layout-sm="column">
 		<div class="left-profile" flex layout="column">
 			<img alt="User Avatar" ng-src="{{ vm.currentUser.avatar }}" class="avatar-large">
 			
@@ -10,31 +10,59 @@
 		
 		
 		<div class="right-profile" flex="75" layout="column">
-			<h1 class="username-profile">{{ vm.currentUser.username  || "no username defined" }}</h1>
+			<h1 class="username-profile">{{ vm.currentUser.username + " &#062;&#062; click to edit"  || "no username defined" }}</h1>
 			
 			<div class="large-screen-closed stats-box">
 				stats will go here when they are available
 			</div>
 			
-			<div class="public-profile-info">
-				<p>
-					<a class="dummy-link">{{ vm.currentUser.email || "no email defined" }}</a>
-				</p>
-				<p>
-					{{ vm.currentUser.website.value || "no website defined" }}
-				</p>
-				<p>
-					{{ vm.currentUser.bio || vm.standardBio }}
-				</p>
-				<p>
-					{{ vm.currentUser.facebookUrl || "Facebook profile url not defined" }}
-				</p>
-				<p>
-					{{ vm.currentUser.twitterUrl || "no Twitter profile url defined" }}
-				</p>
-				<p>
-					{{ vm.currentUser.linkedinUrl || "no LinkedIn profile url defined" }}
-				</p>
+			<div class="edit-profile-info">
+				<div class="to-edit" ng-hide="vm.editModeOn.email" ng-click="vm.editItem('email')" >
+					<a class="dummy-link">{{ vm.tempUser.email || "no email defined; click to add" }}</a>
+				</div>
+				
+				<div class="editing" ng-show="vm.editModeOn.email || true">
+					<form>
+						<md-input-container>
+							<label for="vm.tempUser.email">Email</label>
+							<input type="email" ng-model="vm.tempUser.email">
+						</md-input-container>
+						
+						<input type="submit" class="md-button edit-submit-button" ng-click="vm.updateEmail()">
+					</form>
+				</div>
+				
+				
+				<div class="to-edit" ng-hide="vm.editModeOn.bio">
+					{{ vm.currentUser.bio || vm.standardBio + " Click to add." }}
+				</div>
+				
+				
+				<div class="to-edit" ng-hide="vm.editModeOn.facebookUrl">
+					{{ vm.currentUser.facebookUrl || "Facebook profile url not defined; click to add" }}
+				</div>
+				
+				
+				<div class="to-edit" ng-hide="vm.editModeOn.twitterUrl">
+					{{ vm.currentUser.twitterUrl || "no Twitter profile url defined; click to add" }}
+				</div>
+				
+				
+				<div class="to-edit" ng-hide="vm.editModeOn.linkedinUrl" ng-click="vm.editItem('linkedinUrl')" layout="row">
+					{{ vm.currentUser.linkedinUrl || "no LinkedIn profile url defined; click to add" }}
+					<md-button class="remove-selection" ng-click="vm.removeCurrent('linkedinUrl')" ng-if="vm.currentUser.linkedinUrl">X</md-button>
+				</div>
+				
+				
+				<div ng-repeat="website in vm.currentUser.websites"  class="to-edit" layout="row">
+					<div ng-hide="vm.editModeOn.websites[$index]" ng-click="vm.editWebsite($index)" flex>
+						<a class="dummy-link">{{ website }}</a>
+					</div>
+					<md-button class="remove-selection" ng-click="vm.removeCurrent('website', $index)">X</md-button>
+				</div>
+				<div ng-if="!vm.currentUser.websites.length" class="to-edit" ng-hide="vm.editModeOn.websites[0]" ng-click="vm.addWebsite()" layout="row">
+					<p flex>no website defined; click to add</p>
+				</div>
 			</div>
 		</div>
 	</md-card>

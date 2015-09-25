@@ -20,7 +20,7 @@ html, body, section, ng-view, view-container {
 	text-align: center;
 }
 
-a:link {
+a:link, .dummy-link {
 	text-decoration: none;
 	color: #348ADE;
 }
@@ -30,11 +30,16 @@ a:visited {
 }
 
 a:hover {
-	text-decoration: uunderline;
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .pull-right {
 	text-align: center;
+}
+
+.md-fab {
+	background-color: rgba(158,158,158,0.0);
 }
 
 
@@ -322,7 +327,7 @@ footer {
 
 /*    -----------------------------    PUBLIC PROFILE DIRECTIVE    */
 
-.profile-view {
+.profile-view, .edit-profile-view {
 	width: 80%;
 	max-width: 1000px;
 	
@@ -339,7 +344,7 @@ footer {
 	/*position: relative;*/
 }
 	
-	.profile-view > div {
+	.profile-view > div, .edit-profile-view > div {
 		padding: 20px;
 		
 		position: relative;
@@ -369,8 +374,57 @@ footer {
 			width: 100%;
 		}
 		
-		.public-profile-info {
+		.public-profile-info, .edit-profile-info {
 			margin-top: 45px;
+		}
+		
+		
+/*   ----------------------------------   EDIT PROFILE DIRECTIVE   */
+
+.edit-profile-info > div {
+	margin: .5em 0;
+	padding: .5em 10px;
+	
+	
+}
+
+	.edit-profile-info > div[ng-repeat] {
+		padding: .5em 10px;
+	}
+	
+	.to-edit {
+		transition: all linear .2s;
+	}
+	
+	.to-edit:hover {
+		background-color: rgba(158,158,158,0.3);
+		
+		cursor: pointer;
+		
+		border-radius: 3px;
+		
+	}
+		
+		.remove-selection {
+			/*background-color: rgba(158,158,158,0.0);*/
+			min-width: auto;
+			min-height: auto;
+			width: 20px;
+			height: 20px;
+			
+			margin: 0;
+			
+			border-radius: 10px;
+			
+			font-size: 8pt;
+			font-weight: bold;
+			line-height: 8pt;
+		}
+		
+		.remove-selection:hover {
+			background-color: #B51514 !important;
+			
+			/*outline: */
 		}
 
 

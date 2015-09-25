@@ -20,11 +20,31 @@
 				<p>
 					<a ng-href="mailto: {{ vm.currentUser.email }}">{{ vm.currentUser.email || "no email defined" }}</a>
 				</p>
-				<p>{{ vm.currentUser.website.value || "no website defined" }}</p>
-				<p>{{ vm.currentUser.bio || vm.standardBio }}</p>
-				<p>{{ vm.currentUser.facebookUrl || "Facebook profile url not defined" }}</p>
-				<p>{{ vm.currentUser.twitterUrl || "no Twitter profile url defined" }}</p>
-				<p>{{ vm.currentUser.linkedinUrl || "no LinkedIn profile url defined" }}</p>
+				
+				<p>
+					{{ vm.currentUser.bio || vm.standardBio }}
+				</p>
+				
+				<p>
+					{{ vm.currentUser.facebookUrl || "Facebook profile url not defined" }}
+				</p>
+				
+				<p>
+					{{ vm.currentUser.twitterUrl || "no Twitter profile url defined" }}
+				</p>
+				
+				<p>
+					{{ vm.currentUser.linkedinUrl || "no LinkedIn profile url defined" }}
+				</p>
+				
+				<p>
+					<div ng-repeat="website in vm.currentUser.websites">
+						<a ng-href="{{ website }}">{{ website }}</a>
+					</div>
+					<div ng-if="!vm.currentUser.websites.length">
+						no website defined
+					</div>
+				</p>
 			</div>
 		</div>
 	</md-card>

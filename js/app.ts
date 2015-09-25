@@ -82,7 +82,6 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
             controllerAs: 'vm',
             resolve: {
                 'currentAuth': ['Auth', function(Auth) {
-                    console.log(Auth.authObj.$getAuth());
                     return Auth.authObj.$requireAuth();
                 }],
                 'currentUser': ['Auth', '$firebaseArray', 'MainService', function(Auth, $firebaseArray, MainService) {
