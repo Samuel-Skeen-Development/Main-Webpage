@@ -1,7 +1,7 @@
 app.controller('RegistrationController', ['MainService', 'Auth', '$location', '$firebaseArray', '$timeout', function(MainService, Auth, $location, $firebaseArray, $timeout) {
 	var vm = this;
 	
-	console.log(Audio.authData);
+	// console.log(Audio.authData);
 	
 	vm.authData = Auth.authData;
 	
@@ -28,16 +28,16 @@ app.controller('RegistrationController', ['MainService', 'Auth', '$location', '$
 	vm.step = 1;
 	
 	vm.users = $firebaseArray(MainService.usersRef);
-	// console.log(vm.users);
+	console.log(vm.users);
 	
-	vm.newUser = {}
+	vm.newUser = {};
 	
 	vm.submitNewUser = function() {
 		if ((vm.password === vm.confirmPassword) && vm.password && vm.email) {
 			console.log('Valid data was entered')
 			
 			vm.newUser.email = vm.email;
-			vm.newUser.password = vm.password
+			vm.newUser.password = vm.password;
 			
 			Auth.authObj.$createUser(vm.newUser)
 				.then(function(authData) {
@@ -47,16 +47,16 @@ app.controller('RegistrationController', ['MainService', 'Auth', '$location', '$
 					
 					Auth.authObj.$authWithPassword(vm.newUser)
 						.then(function (authData) {
-							console.log('Successfully logged user in', authData.uid)
+							console.log('Successfully logged user in', authData.uid);
 						}, function(e) {
 							console.log('Authentication unsuccessful', e);
 						});
 					
+					vm.step = 2;
 				}, function(e) {
 					console.log("Fail", e);
 				});
 			
-			vm.step = 2;
 		} else if (vm.password !== vm.confirmPassword) {
 			console.log('The password needs to be the same as the confirmed password.');
 		} else if (vm.email === '' || vm.password === '' || vm.confirmPassword) {

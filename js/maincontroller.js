@@ -20,9 +20,10 @@ app.controller('MainController', ['$location', '$firebaseObject', '$firebaseArra
                 }
             }
         }
-        users.$loaded().then(function () {
-            initializeCurrentUser(vm.authData);
-        });
+        users.$loaded()
+            .then(function() {
+                initializeCurrentUser(vm.authData);
+            });
         // ------------------------------------    AUTHENTICATION LISTENER
         Auth.authObj.$onAuth(function (authData) {
             vm.authData = authData;

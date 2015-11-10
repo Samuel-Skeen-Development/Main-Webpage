@@ -8,6 +8,4 @@ app.service('Auth', ['$firebaseAuth', 'MainService', function($firebaseAuth, Mai
 	// });
 	
 	serv.authData;
-	
-	serv.isLoggedIn = false;
 }]);

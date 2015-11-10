@@ -4,8 +4,8 @@ app.controller('LoginController', ['Auth', '$location', function(Auth, $location
 	// console.log(Auth.authData)
 	
 	vm.validateForm = function() {
-		if (vm.email && vm.password) {
-				
+		if (vm.email && vm.password)
+		{		
 			Auth.authObj.$authWithPassword({
 				email: vm.email,
 				password: vm.password
@@ -15,11 +15,14 @@ app.controller('LoginController', ['Auth', '$location', function(Auth, $location
 					// console.log("Success", Auth.authData);
 					
 					$location.path('#/home');
-					
+					// $state.go('profile');
 				}, function(error) {
 					console.error(error);
 				});
-		} else {
+		}
+		
+		else
+		{
 			console.log('Please fill out the form entirely before you can continue.');
 		}
 	}

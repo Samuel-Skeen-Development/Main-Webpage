@@ -1,4 +1,3 @@
-/// <reference path="app.ts" />
 app.service('MainService', [function () {
         var serv = this;
         serv.rootUrl = 'https://sam-skeen-dev-web.firebaseio.com/site';
